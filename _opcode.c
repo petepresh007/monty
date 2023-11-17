@@ -1,67 +1,71 @@
 #include "monty.h"
 
 /**
- * the_pall - prints all the values on the stack.
+ * the_pall - prints all values on the stack
  * @stk: A double pointer to the head of the stack_t list
  * @line_number: Lines executed
 */
+
 void the_pall(stack_t **stk, unsigned int line_number)
 {
-    stack_t *tmp;
+	stack_t *temp;
 
-    (void)line_number;
+	(void)line_number;
 
-    if (!*stk)
-        return;
+	if (!*stk)
+		return;
 
-    tmp = *stk;
+	temp = *stk;
 
-    while (tmp)
-    {
-        printf("%d\n", tmp->n);
-        tmp = tmp->next;
-    }
+	while (temp)
+	{
+		printf("%d\n", temp->n);
+		temp = temp->next;
+	}
 }
 
+
 /**
- * the_nop - just there
+ * nop - Blank
  * @stk: A double pointer to the head of the stack_t list
  * @line_number: Lines executed
 */
-void the_nop(stack_t **stk, unsigned int line_number)
+void nop(stack_t **stk, unsigned int line_number)
 {
-    (void)*stk;
-    (void)line_number;
+	(void)*stk;
+	(void)line_number;
 }
 
+
 /**
- * the_add - Adds elements to the stack
+ * just_add - Adds elements to the stack
  * @stk: A double pointer to the head of the stack_t list
  * @line_number: Lines executed
 */
-void the_add(stack_t **stk, unsigned int line_number)
+void just_add(stack_t **stk, unsigned int line_number)
 {
-    stack_t *tmp = *stk;
-    size_t len = 0;
+	stack_t *temp = *stk;
+	size_t len = 0;
 
-    while (tmp)
-    {
-        len++;
-        tmp = tmp->next;
-    }
+	while (temp)
+	{
+		len++;
+		temp = temp->next;
+	}
 
-    if (len < 2)
-    {
-        fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
-        my_data.opcode_my_data = 0;
-        return;
-    }
+	if (len < 2)
+	{
+		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
+		my_data.opcode_my_data = 0;
+		return;
+	}
 
-    tmp = *stk;
-    *stk = (*stk)->next;
-    (*stk)->n += tmp->n;
-    free(tmp);
+	temp = *stk;
+	*stk = (*stk)->next;
+	(*stk)->n += temp->n;
+	free(temp);
 }
+
 
 /**
  * the_pop - Removes the top element of the stack
@@ -70,18 +74,19 @@ void the_add(stack_t **stk, unsigned int line_number)
 */
 void the_pop(stack_t **stk, unsigned int line_number)
 {
-    stack_t *tmp = *stk;
+	stack_t *temp = *stk;
 
-    if (!*stk)
-    {
-        fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
-        my_data.opcode_my_data = 0;
-        return;
-    }
+	if (!*stk)
+	{
+		fprintf(stderr, "L%d: can't pop, stack empty\n", line_number);
+		my_data.opcode_my_data = 0;
+		return;
+	}
 
-    *stk = (*stk)->next;
-    free(tmp);
+	*stk = (*stk)->next;
+	free(temp);
 }
+
 
 /**
  * the_swap - Swaps the top two elements of the stack
@@ -90,27 +95,27 @@ void the_pop(stack_t **stk, unsigned int line_number)
 */
 void the_swap(stack_t **stk, unsigned int line_number)
 {
-    size_t len = 0;
-    stack_t *tmp = *stk;
+	size_t len = 0;
+	stack_t *temp = *stk;
 
-    while (tmp)
-    {
-        len++;
-        tmp = tmp->next;
-    }
+	while (temp)
+	{
+		len++;
+		temp = temp->next;
+	}
 
-    if (len < 2)
-    {
-        fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
-        my_data.opcode_my_data = 0;
-        return;
-    }
+	if (len < 2)
+	{
+		fprintf(stderr, "L%d: can't swap, stack short\n", line_number);
+		my_data.opcode_my_data = 0;
+		return;
+	}
 
-    tmp = *stk;
-    *stk = (*stk)->next;
+	temp = *stk;
+	*stk = (*stk)->next;
 
-    tmp->next = tmp->next->next;
-    tmp->prev = *stk;
-    (*stk)->next = tmp;
-    (*stk)->prev = NULL;
+	temp->next = temp->next->next;
+	temp->prev = *stk;
+	(*stk)->next = temp;
+	(*stk)->prev = NULL;
 }

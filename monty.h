@@ -25,9 +25,9 @@
  */
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
 
 /**
@@ -40,8 +40,8 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-        char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
 /**
@@ -61,15 +61,15 @@ typedef struct glob_variable
 	size_t temp;
 	instruction_t *dictionary;
 	stack_t *head;
-	unsigned int line-num;
+	unsigned int line_num;
 	int MODE;
 } variables;
 
 extern variables variable;
 
 int start_variables(variables *variable);
-instrution_t *create_instru();
-int call-function(variables *variable, char *opcode);
+instruction_t *create_instru();
+int call_function(variables *variable, char *opcode);
 void free_all(void);
 int _is_digit(char *string);
 
@@ -78,8 +78,8 @@ void push(stack_t **stk, unsigned int line_number);
 void pint(stack_t **stk, unsigned int line_number);
 void pop(stack_t **stk, unsigned int line_number);
 
-void swap(stack_t **stk, unsigned int line-number);
-void add(stack_t **stk, unsigned int line-number);
+void swap(stack_t **stk, unsigned int line_number);
+void add(stack_t **stk, unsigned int line_number);
 void sub(stack_t **stk, unsigned int line_number);
 void divi(stack_t **stk, unsigned int line_number);
 

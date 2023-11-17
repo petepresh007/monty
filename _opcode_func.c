@@ -8,7 +8,7 @@
 void pall(stack_t **stk, unsigned int line_number)
 {
 	stack_t *tmp = *stk;
-	(void) line-number;
+	(void) line_number;
 
 	if (!tmp)
 		return;

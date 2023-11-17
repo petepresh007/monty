@@ -12,7 +12,7 @@ int main(int argc, char **argv)
 {
 	FILE *file;
 
-	my_data.order = 1;
+	flag.order = 1;
 
 	if (argc != 2)
 	{

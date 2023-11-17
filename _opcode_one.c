@@ -20,12 +20,12 @@ void the_push(stack_t **stk, unsigned int line_number)
 		if (*stk)
 			free_list(stk);
 
-		my_data.opcode_my_data = 0;
+		flag.opcode_flag = 0;
 		return;
 	}
 
-	new_node->n = my_data.number;
-	if (my_data.order)
+	new_node->n = flag.number;
+	if (flag.order)
 	{
 		new_node->prev = NULL;
 		new_node->next = *stk;
@@ -67,7 +67,7 @@ void the_pint(stack_t **stk, unsigned int line_number)
 	if (!*stk)
 	{
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
-		my_data.opcode_my_data = 0;
+		flag.opcode_flag = 0;
 		return;
 	}
 
@@ -94,7 +94,7 @@ void just_sub(stack_t **stk, unsigned int line_number)
 	if (len < 2)
 	{
 		fprintf(stderr, "L%d: can't subtract, stack short\n", line_number);
-		my_data.opcode_my_data = 0;
+		flag.opcode_flag = 0;
 		return;
 	}
 
@@ -124,14 +124,14 @@ void just_div(stack_t **stk, unsigned int line_number)
 	if (len < 2)
 	{
 		fprintf(stderr, "L%d: can't divide, stack short\n", line_number);
-		my_data.opcode_my_data = 0;
+		flag.opcode_flag = 0;
 		return;
 	}
 
 	if ((*stk)->n == 0)
 	{
 		fprintf(stderr, "L%d: division by zero\n", line_number);
-		my_data.opcode_my_data = 0;
+		flag.opcode_flag = 0;
 		return;
 	}
 
@@ -161,7 +161,7 @@ void just_mul(stack_t **stk, unsigned int line_number)
 	if (len < 2)
 	{
 		fprintf(stderr, "L%d: can't mul, stack too short\n", line_number);
-		my_data.opcode_my_data = 0;
+		flag.opcode_flag = 0;
 		return;
 	}
 

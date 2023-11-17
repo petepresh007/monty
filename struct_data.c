@@ -10,7 +10,7 @@ void queue(stack_t **stk, unsigned int line_number)
 	(void)line_number;
 	(void)*stk;
 
-	my_data.order = 0;
+	flag.order = 0;
 }
 
 
@@ -24,5 +24,5 @@ void _stack(stack_t **stk, unsigned int line_number)
 	(void)line_number;
 	(void)*stk;
 
-	my_data.order = 1;
+	flag.order = 1;
 }

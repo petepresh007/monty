@@ -24,8 +24,8 @@ int execute(char *file_input, unsigned int line_no, stack_t **stk)
 		{"queue", queue}, {"stack", _stack}, {NULL, NULL}
 	};
 
-	my_data.opcode_my_data = 1;
-	my_data.number = 0;
+	flag.opcode_flag = 1;
+	flag.number = 0;
 
 	tokenized_array = malloc(sizeof(char *) * READ_BUFFER);
 	if (!tokenized_array)
@@ -58,7 +58,7 @@ int execute(char *file_input, unsigned int line_no, stack_t **stk)
 			{
 				if (_isdigit(tokenized_array[1]))
 				{
-					my_data.number = atoi(tokenized_array[1]);
+					flag.number = atoi(tokenized_array[1]);
 					the_push(stk, line_no);
 					status = 0;
 					break;
@@ -82,7 +82,7 @@ int execute(char *file_input, unsigned int line_no, stack_t **stk)
 	}
 	free_array(tokenized_array);
 
-	if (!my_data.opcode_my_data)
+	if (!flag.opcode_flag)
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }

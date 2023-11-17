@@ -32,19 +32,19 @@ typedef struct stack_s
 } stack_t;
 
 /**
- * struct data_hub - Data hub for program
- * @opcode_my_data: Checks for malloc
+ * struct data_hub - contains data
+ * @opcode_flag: Checks for malloc
  * @number: Integer to push to stack
- * @order: The order in which elements should be added to the data structure
+ * @order: The order to include elements
 */
 typedef struct data_hub
 {
-	int opcode_my_data;
+	int opcode_flag;
 	int number;
 	int order;
 } data;
 
-extern data my_data;
+extern data flag;
 
 /**
 * struct instruction_s - opcode and its function

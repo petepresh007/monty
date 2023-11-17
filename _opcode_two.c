@@ -20,14 +20,14 @@ void the_mod(stack_t **stk, unsigned int line_number)
 	if (len < 2)
 	{
 		fprintf(stderr, "L%d: can't mod, stack too short\n", line_number);
-		my_data.opcode_my_data = 0;
+		flag.opcode_flag = 0;
 		return;
 	}
 
 	if ((*stk)->n == 0)
 	{
 		fprintf(stderr, "L%d: division by zero\n", line_number);
-		my_data.opcode_my_data = 0;
+		flag.opcode_flag = 0;
 		return;
 	}
 
@@ -50,14 +50,14 @@ void pchar(stack_t **stk, unsigned int line_number)
 	if (!*stk)
 	{
 		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
-		my_data.opcode_my_data = 0;
+		flag.opcode_flag = 0;
 		return;
 	}
 
 	if ((*stk)->n < 0 || (*stk)->n > 127)
 	{
 		fprintf(stderr, "L%d: can't pchar, value not okay\n", line_number);
-		my_data.opcode_my_data = 0;
+		flag.opcode_flag = 0;
 		return;
 	}
 

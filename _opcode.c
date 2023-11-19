@@ -4,6 +4,7 @@
  * the_pall - prints all values on the stack
  * @stk: A double pointer to the head of the stack_t list
  * @line_number: Lines executed
+ * Return: nothing
 */
 
 void the_pall(stack_t **stk, unsigned int line_number)
